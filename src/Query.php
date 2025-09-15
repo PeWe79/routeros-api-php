@@ -228,7 +228,7 @@ class Query implements QueryInterface
      * @return \RouterOS\Interfaces\QueryInterface
      * @since 0.7
      */
-    public function setEndpoint(string $endpoint = null): QueryInterface
+    public function setEndpoint(?string $endpoint = null): QueryInterface
     {
         $this->_endpoint = $endpoint;
         return $this;

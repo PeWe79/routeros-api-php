@@ -55,7 +55,7 @@ interface ClientInterface
      *
      * @since 1.0.0
      */
-    public function query($endpoint, array $where = null, string $operations = null, string $tag = null): ClientInterface;
+    public function query($endpoint, ?array $where = null, ?string $operations = null, ?string $tag = null): ClientInterface;
 
     /**
      * Execute export command on remote host, it also will be used
@@ -66,5 +66,5 @@ interface ClientInterface
      * @return string
      * @since  1.3.0
      */
-    public function export(string $arguments = null): string;
+    public function export(?string $arguments = null): string;
 }

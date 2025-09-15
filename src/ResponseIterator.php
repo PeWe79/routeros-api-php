@@ -78,10 +78,10 @@ class ResponseIterator implements Iterator, ArrayAccess, Countable, Serializable
         $count     = count($raw);
         $result    = [];
 
-        if (isset($positions[1])) {
-
-            foreach ($positions as $key => $position) {
-
+        if (isset($positions[1]))
+        {
+            foreach ($positions as $key => $position)
+            {
                 // Get length of future block
                 $length = isset($positions[$key + 1])
                     ? $positions[$key + 1] - $position + 1
@@ -90,8 +90,9 @@ class ResponseIterator implements Iterator, ArrayAccess, Countable, Serializable
                 // Convert array to simple items, save as result
                 $result[] = array_slice($raw, $position, $length);
             }
-
-        } else {
+        }
+        else
+        {
             $result = [$raw];
         }
 
@@ -119,15 +120,18 @@ class ResponseIterator implements Iterator, ArrayAccess, Countable, Serializable
      *
      * @return mixed
      */
-    public function current()
+    public function current(): mixed
     {
-        if (isset($this->parsed[$this->current])) {
+        if (isset($this->parsed[$this->current]))
+        {
             return $this->parsed[$this->current];
         }
 
-        if ($this->valid()) {
+        if ($this->valid())
+        {
 
-            if (!isset($this->parsed[$this->current])) {
+            if (!isset($this->parsed[$this->current]))
+            {
                 $value = $this->client->parseResponse($this->raw[$this->current])[0];
                 $this->offsetSet($this->current, $value);
             }
@@ -143,7 +147,7 @@ class ResponseIterator implements Iterator, ArrayAccess, Countable, Serializable
      *
      * @return mixed
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->current;
     }
@@ -184,9 +188,12 @@ class ResponseIterator implements Iterator, ArrayAccess, Countable, Serializable
      */
     public function offsetSet($offset, $value): void
     {
-        if (null === $offset) {
+        if (null === $offset)
+        {
             $this->parsed[] = $value;
-        } else {
+        }
+        else
+        {
             $this->parsed[$offset] = $value;
         }
     }
@@ -220,15 +227,18 @@ class ResponseIterator implements Iterator, ArrayAccess, Countable, Serializable
      *
      * @return bool|mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        if (isset($this->parsed[$offset])) {
+        if (isset($this->parsed[$offset]))
+        {
             return $this->parsed[$offset];
         }
 
-        if (isset($this->raw[$offset]) && $this->raw[$offset] !== null) {
+        if (isset($this->raw[$offset]) && $this->raw[$offset] !== null)
+        {
             $f = $this->client->parseResponse($this->raw[$offset]);
-            if ($f !== []) {
+            if ($f !== [])
+            {
                 return $this->parsed[$offset] = $f[0];
             }
         }
@@ -253,6 +263,6 @@ class ResponseIterator implements Iterator, ArrayAccess, Countable, Serializable
      */
     public function unserialize($serialized): void
     {
-        $this->raw = unserialize($serialized, null);
+        $this->raw = unserialize($serialized);
     }
 }

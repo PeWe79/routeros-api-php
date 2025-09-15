@@ -118,7 +118,7 @@ class Client implements Interfaces\ClientInterface
      * @throws \RouterOS\Exceptions\ConfigException
      * @since 1.0.0
      */
-    public function query($endpoint, array $where = null, string $operations = null, string $tag = null): ClientInterface
+    public function query($endpoint, ?array $where = null, ?string $operations = null, ?string $tag = null): ClientInterface
     {
         // If endpoint is string then build Query object
         $query = ($endpoint instanceof Query)
@@ -580,7 +580,7 @@ class Client implements Interfaces\ClientInterface
      * @throws \RouterOS\Exceptions\ClientException
      * @since 1.3.0
      */
-    public function export(string $arguments = null): string
+    public function export(?string $arguments = null): string
     {
         // Set params
         $sshHost       = $this->config('host');

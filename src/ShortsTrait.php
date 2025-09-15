@@ -24,7 +24,7 @@ trait ShortsTrait
      * @return \RouterOS\Client
      * @since 1.0.0
      */
-    public function q($endpoint, array $where = null, string $operations = null, string $tag = null): Client
+    public function q($endpoint, ?array $where = null, ?string $operations = null, ?string $tag = null): Client
     {
         return $this->query($endpoint, $where, $operations, $tag);
     }
@@ -69,7 +69,7 @@ trait ShortsTrait
      * @return array
      * @since 1.0.0
      */
-    public function qr($endpoint, array $where = null, string $operations = null, string $tag = null, bool $parse = true, array $options = []): array
+    public function qr($endpoint, ?array $where = null, ?string $operations = null, ?string $tag = null, bool $parse = true, array $options = []): array
     {
         return $this->query($endpoint, $where, $operations, $tag)->read($parse, $options);
     }
@@ -86,7 +86,7 @@ trait ShortsTrait
      * @return \RouterOS\ResponseIterator
      * @since 1.0.0
      */
-    public function qri($endpoint, array $where = null, string $operations = null, string $tag = null, array $options = []): ResponseIterator
+    public function qri($endpoint, ?array $where = null, ?string $operations = null, ?string $tag = null, array $options = []): ResponseIterator
     {
         return $this->query($endpoint, $where, $operations, $tag)->readAsIterator($options);
     }

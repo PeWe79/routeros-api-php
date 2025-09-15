@@ -70,7 +70,7 @@ class StringStream implements StreamInterface
      *
      * @throws \InvalidArgumentException on invalid length
      */
-    public function write(string $string, int $length = null): int
+    public function write(string $string, ?int $length = null): int
     {
         if (null === $length) {
             $length = strlen($string);
