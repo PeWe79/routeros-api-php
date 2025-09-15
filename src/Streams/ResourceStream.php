@@ -67,7 +67,7 @@ class ResourceStream implements StreamInterface
      *
      * @throws \RouterOS\Exceptions\StreamException when not possible to write bytes
      */
-    public function write(string $string, int $length = null): int
+    public function write(string $string, ?int $length = null): int
     {
         if (null === $length) {
             $length = strlen($string);
